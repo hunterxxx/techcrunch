@@ -20,8 +20,10 @@ class Landing_Page(object):
 
     @cherrypy.expose
     def newTransaction(self):
-        tmpl = env.get_template('testing.html')
-        return tmpl.render()
+        #tmpl = env.get_template('testing.html')
+        #return tmpl.render()
+        raise cherrypy.HTTPRedirect("https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9")
+        #return "https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9"
 
     def parse_code(parse_token):
         ind = parse_token.index("access_token")
@@ -35,7 +37,15 @@ class Landing_Page(object):
             return False
         else:
             print("connection broken")
-            
+
+    @cherrypy.expose
+    def some(self):
+        tmpl = env.get_template('some.html')
+        print(cherrypy.url())
+        print(cherrypy.request)
+        print()
+        return tmpl.render()
+
 config = {
     'global': {
         'server.socket_host': '0.0.0.0',
@@ -49,3 +59,4 @@ config = {
 }
 
 cherrypy.quickstart(Landing_Page(), '/', config=config)
+
