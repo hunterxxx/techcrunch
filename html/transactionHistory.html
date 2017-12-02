@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- start: mobile wrapper -->
+    <div id="mobile-wrapper">
+        <div class="message-popover">Transaction<br />confirmed!</div>
+        
+        <div class="transaction-history">
+            <div class="header">
+                <div class="img-container">
+                  <img src="../assets/images/StatusBar.png"/>
+                </div>
+                <h1>Transaction History</h1>
+            </div>
+            
+            <div class="content">
+                <div class="transactions-container">
+                    <div class="transactions">
+
+                        <div class="tabs">
+                            <div class="content-wrapper">
+                                <ul>
+                                    <li><a href="#" class="pending">Pending</a></li>
+                                    <li><a href="#" class="confirmed active btn btn-primary">Confirmed</a></li>
+                                    <li><a href="#" class="denied">Denied</a></li>
+                                <ul>
+                            </div>
+                        </div>
+
+                        {% for item in seq %}
+                          <li class="transaction">
+                                <div class="header spec">
+                                  <div class="left">
+                                      <h3 class="stock-abbrev">{{item['StockId']}}</h3>
+                                    </div>
+                                    <div class="right">
+                                      <a href='#'>View transaction details</a>
+                                    </div>
+                                  </div>
+                                  <div class="mid-info">
+                                    <p><b>Confirmed at:</b> {{ item['Timestamp'] }} <br>
+                                       <b>Purchase on:</b> {{item['TimestampPurch']}}</p>
+                                  </div>
+                                  <div class="transaction-summary spec">
+                                    <div class="left">
+                                      <h3 class="amount">{{ item['MoneySpent'] }}€</h3>
+                                      <span class="sub-text">(Amount paid)</span>
+                                    </div><div class="right">
+                                      <h3 class="amount">{{ item['Amount'] }}</h3>
+                                      <span class="sub-text">(Shares)</span>
+                                    </div>
+                                  </div>
+                                  <div class="link-container">
+                                    <a>
+                                      <span class="text">Share</span>
+                                      <span class="icon">
+                                        <img src="../assets/images/share.svg"/>
+                                      </span>
+                                    </a>
+                                  </div>
+                                </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="content-wrapper">
+                <ul>
+                    <li><a href="/portfolio" class="portfolio">Portfolio</a></li>
+                    <li><a href="/transactionHistory" class="transactions active">Transactions</a></li>
+                    <li><a href="#" class="marketplace">Marketplace</a></li>
+                    <li><a href="#" class="settings">Settings</a></li>
+                <ul>
+            </div>
+        </div>
+
+    <!-- end: mobile wrapper -->
+
+    </div>
+{% endblock %}
