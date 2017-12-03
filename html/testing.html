@@ -3,53 +3,63 @@
 <!-- start: mobile wrapper -->
 <div id="mobile-wrapper">
     <div class="new-transaction">
-    	<div class="wrapper">
-        <button id="btnSearch" class="btn btn-primary btn-md center-block" Style="width: 100px;" OnClick="btnSearch_Click" >button</button>
-         <button id="btnClear" class="btn btn-danger btn-md center-block" Style="width: 100px;" OnClick="btnClear_Click" >button</button>
-    	</div>
+        <div class="title" font size="40px">The Price of 1 BTC will </div>
+        <br>
+        <br>
+        <div class="center" class="title">{{name}}</div>
+        <br>
+        <div class="centerHunter"><p> Winners are announced in <span id="countdowntimer">10 </span> Seconds</p></div>
 
-         <div class="btn-container">
-            <a href="/transactionHistory" id="purchase-button" class="btn btn-primary btn-block">To The Moon!</a>
-            <a href="/transactionHistory" id="purchase-button" class="btn btn-primary btn-block">Crush!</a>
+        <script type="text/javascript">
+            var timeleft = 10;
+            var downloadTimer = setInterval(function(){
+                timeleft--;
+                document.getElementById("countdowntimer").textContent = timeleft;
+                if(timeleft <= 0){
+                    clearInterval(downloadTimer);
+                    location.reload(true);
+                }
+            },1000);
+        </script>
+
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <button id="btnSearch" class="btn btn-primary btn-md center-block" Style="width: 185px;" OnClick="btnSearch_Click" >To The Moon!</button>
+                <button id="btnClear" class="btn btn-danger btn-md center-block" Style="width: 185.5px;" OnClick="btnClear_Click" >Crush!</button>
+                <button id="btnClear" class="btn btn-info" btn-md center-block" Style="width: 375px;" OnClick="btnSearch_Click" >Stay The Same!</button>
+
+            </div>
         </div>
-        <div class="btn-container">
-            <a href="/transactionHistory" id="purchase-button" class="btn btn-primary btn-block">Crush!</a>
-        </div>
-      <div class="tabs-container">
-        <ul class="tabs">
-            <li class="active">Buy Stock</li>
-            <li>Stock Trends</li>
-        </ul>
-    </div>
-    <div class="content">
-        <div class="specs-container">
-            <ul class="specs">
-                <li class="spec">
-                    <div class="left">
-                        <p class="title">Original Purchase:</p>
-                        <span class="sub-text">({{ booking_date }})</span>
-                    </div><div class="right">
-                        <h3 class="amount">{{ transAmount }}€</h3>
-                        <span class="sub-text">({{ companyName }})</span>
-                    </div>
-                </li>
-                <li class="spec">
-                    <div class="left">
-                        <p class="title">Investment Amount:</p>
-                   </div><div class="right">
-                        <h3 class="amount">{{ stockAmount }}€</h3>
-                        <span class="sub-text">(1% of transaction)</span>
-                   </div>
-                </li>
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li class="active">Current Balance</li>
             </ul>
         </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" value="">
-            Always accept investments from {{ companyName }}.
-          </label>
-        </div>
-    </div>
-<!-- end: mobile wrapper -->
-</div>
-{% endblock %}
+        <div class="content">
+            <div class="specs-container">
+                <ul class="specs">
+                    <li class="spec">
+                        <div class="left">
+                            <p class="title">Original Purchase:</p>
+                        </div><div class="right">
+                            <h3 class="amount">{{ transAmount }}€</h3>
+                        </div>
+                    </li>
+                    <li class="spec">
+                        <div class="left">
+                            <p class="title">Bet Amount:</p>
+                        </div><div class="right">
+                            <h3 class="amount">100 €</h3>
+                        </div>
+                    </li>
+                </ul>
+
+           </div>
+       </div>
+       <!-- end: mobile wrapper -->
+
+   </div>
+   {% endblock %}

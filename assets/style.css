@@ -3,6 +3,31 @@ html {
   color: #333;
 }
 
+.center {
+    text-align: center;
+    font-size: 60px;
+    padding: 10px;
+}
+
+.centerMiddle {
+    text-align: center;
+    font-size: 40px;
+    padding: 10px;
+}
+
+
+.centerHunter {
+    text-align: center;
+    margin: auto;
+}
+
+#btnSearch,
+#btnClear{
+    display: inline-block;
+    vertical-align: top;
+    padding: 1em;
+}
+
 a, a:hover, a:focus, a:visited
 {
   text-decoration: none;
@@ -27,6 +52,7 @@ h3
 
 #purchase-button
 {
+  display: inline-block;
   font-size: 16px;
   padding: 1em;
 }

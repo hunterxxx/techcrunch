@@ -69,7 +69,13 @@ class Landing_Page(object):
     @cherrypy.expose
     def testing(self): 
         tmpl = env.get_template('testing.html')
-        return tmpl.render()
+        
+        headers = {'Accept': 'application/json'}
+        url = "https://api.coindesk.com/v1/bpi/currentprice.json"
+        r = requests.get(url, headers=headers)
+        response_data = r.json()
+        price = "$" + "{0:.2f}".format(float(str(response_data["bpi"]["USD"]["rate"]).replace(',','')))
+        return tmpl.render(name=price)
 
 
 
