@@ -24,6 +24,7 @@ class Landing_Page(object):
         #return tmpl.render()
         raise cherrypy.HTTPRedirect("https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9")
         #return "https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9"
+        print(cherrypy.url())
 
     def parse_code(parse_token):
         ind = parse_token.index("access_token")
@@ -39,11 +40,18 @@ class Landing_Page(object):
             print("connection broken")
 
     @cherrypy.expose
-    def some(self):
+    def newTransaction1(self):
+        tmpl = env.get_template('testing.html')
+        return tmpl.render()
+
+    @cherrypy.expose
+    def one(self):
         tmpl = env.get_template('some.html')
         print(cherrypy.url())
-        print(cherrypy.request)
-        print()
+        request = cherrypy.request
+        if request.method == 'POST':
+            token = request.cookie['access_token'].value
+            print(123)
         return tmpl.render()
 
 config = {

@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<iframe src="https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9">
-  <p>Your browser does not support iframes.</p>
-</iframe>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block body %}
+<iframe src="https://simulator-api.db.com/gw/oidc/authorize?response_type=code&redirect_uri=http://localhost:5000/some&client_id=9afba87e-d902-450d-8942-79d7a5e0b0a3" width="375" height="667"></iframe>
+{% endblock %}
