@@ -1,6 +1,3 @@
-#wiki text scrap
-from bs4 import BeautifulSoup
-#html request
 import requests
 from cherrypy.lib import static
 import cherrypy
@@ -8,6 +5,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 from requests.auth import HTTPDigestAuth
 import ast
+import json
 
 localDir = os.path.dirname(__file__)
 absDir = os.path.join(os.getcwd(), localDir)
@@ -22,11 +20,11 @@ class Landing_Page(object):
 
     @cherrypy.expose
     def newTransaction(self):
-        #tmpl = env.get_template('testing.html')
-        #return tmpl.render()
-        raise cherrypy.HTTPRedirect("https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9")
+        tmpl = env.get_template('db.html')
+        return tmpl.render()
+        #raise cherrypy.HTTPRedirect("https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9")
         #return "https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9"
-        print(cherrypy.url())
+        #print(cherrypy.url())
 
 
 
@@ -54,10 +52,26 @@ class Landing_Page(object):
         legal = (parse_code(access_token))
         if(legal):
             # The user is legal he can gamble
-            tmpl = env.get_template('some.html')
-            return tmpl.render()
+            tmpl = env.get_template('exchange.html')
+            def btcprice(self):
+                headers = {'Accept': 'application/json'}
+                url = "https://api.coindesk.com/v1/bpi/currentprice.json"
+                r = requests.get(url, headers=headers)
+                response_data = r.json()
+                return "$" + response_data["bpi"]["USD"]["rate"]
+            name = btcprice(self)
+            return tmpl.render(name=name)
         else:
+            return "You are too young to bet. Sorry!"
             # Please reach your leagal age
+
+
+    @cherrypy.expose
+    def testing(self): 
+        tmpl = env.get_template('testing.html')
+        return tmpl.render()
+
+
 
 config = {
     'global': {
