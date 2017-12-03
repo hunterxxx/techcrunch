@@ -5,14 +5,13 @@ html {
 
 .center {
     text-align: center;
-    font-size: 60px;
-    padding: 10px;
+    font-size: 65px;
 }
 
 .centerMiddle {
     text-align: center;
-    font-size: 40px;
-    padding: 10px;
+    margin: auto;
+    font-size: 30px;
 }
 
 
@@ -420,6 +419,23 @@ div.container4 p {
     font-size: 22pt;
     text-transform: uppercase;
     background-image: url('../assets/images/success.svg');
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 330px;
+    color: rgb(93, 120, 204);
+    font-weight: bold;
+    z-index: 10;
+}
+
+.message-lose {
+    position: absolute;
+    width: 375px;
+    height: 667px;
+    background-color: rgba(255, 255, 255, 0.75);
+    font-size: 22pt;
+    text-transform: uppercase;
+    background-image: url('../assets/images/lose.jpg');
     background-position: center 40%;
     background-repeat: no-repeat;
     text-align: center;

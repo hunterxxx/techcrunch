@@ -1,19 +1,20 @@
-
-<!-- start: mobile wrapper -->
         <meta charset="utf-8">
-        <title>Bitcoin Price Better</title>    
+        <title>007 Invest</title>    
         <link rel="stylesheet" href="../assets/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/style.css">
         <script type="text/javascript" src="../assets/jquery.min.js"></script>
         <script type="text/javascript" src="../assets/scripts.js"></script>
+<!-- start: mobile wrapper -->
 <div id="mobile-wrapper">
+
+    <div class="message-popover">You <br />WON ! <br /> Bitcoin Price Increased !</div>
     <div class="new-transaction">
         <br>
         <div class="centerMiddle">The Price of 1 BTC will</div>
         <br>
         <div class="center" class="title">{{name}}</div>
         <br>
-        <div class="centerHunter"><p> Winners are announced in <span id="countdowntimer">10 </span> Seconds</p></div>
+        <div class="centerHunter"><p> Winners are announced in <span id="countdowntimer">20 </span> Seconds</p></div>
 
         <script type="text/javascript">
             var timeleft = 10;
@@ -22,7 +23,6 @@
                 document.getElementById("countdowntimer").textContent = timeleft;
                 if(timeleft <= 0){
                     clearInterval(downloadTimer);
-                    window.location.href="win";
                 }
             },1000);
         </script>
@@ -35,6 +35,7 @@
                 <button id="btnSearch" class="btn btn-success btn-md center-block" Style="width: 182px;" OnClick="btnSearch_Click" >Go To The Moon !</button>
                 <button id="btnClear" class="btn btn-danger btn-md center-block" Style="width: 182px;" OnClick="btnClear_Click" >Crush !</button>
                 <button id="btnClear" class="btn btn-info" btn-md center-block" Style="width: 375px;" OnClick="btnSearch_Click" >Stay The Same !</button>
+                <div id="someHiddenDiv" style="display: none;"><font color="green">To The Moon Bet Confirmed !</font></div>
 
             </div>
         </div>
@@ -48,22 +49,29 @@
                 <ul class="specs">
                     <li class="spec">
                         <div class="left">
-                            <p class="title">Original Purchase:</p>
+                            <p class="title">Initial Balance</p>
                         </div><div class="right">
                             <h3 class="amount">1.400,95 €</h3>
                         </div>
                     </li>
                     <li class="spec">
                         <div class="left">
-                            <p class="title">Bet Amount:</p>
+                            <p class="title">Won Amount:</p>
                         </div><div class="right">
-                            <h3 class="amount">100 €</h3>
+                            <h3 class="amount"><font color="green">+ 100 €</h3></font>
+                        </div>
+                    </li>
+                    <li class="spec">
+                        <div class="left">
+                            <p class="title">Final Balance:</p>
+                        </div><div class="right">
+                            <h3 class="amount">1.500,95 €</h3>
                         </div>
                     </li>
                 </ul>
 
-           </div>
-       </div>
-       <!-- end: mobile wrapper -->
+            </div>
+        </div>
+        <!-- end: mobile wrapper -->
 
-   </div>
+    </div>

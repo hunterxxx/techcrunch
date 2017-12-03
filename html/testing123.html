@@ -14,3 +14,13 @@
                 <label>
                    <div class="centerHunter">100 € Per Bet.</div>
                </label>
+
+
+                                       <div class="message-lose">You <br />LOSE !</div>
+W
+    $popover2 = $(".message-lose");
+    if($popover2.length) {
+        window.setTimeout(function() {
+            $popover2.fadeOut(1000);
+        }, 2000);
+    }

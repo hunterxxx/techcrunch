@@ -26,6 +26,16 @@ class Landing_Page(object):
         #return "https://simulator-api.db.com/gw/oidc/authorize?response_type=token&redirect_uri=localhost:5000&client_id=49dff74c-4c3d-43dc-bbe5-cf2d8c9bf4e9"
         #print(cherrypy.url())
 
+    @cherrypy.expose
+    def win(self):
+        tmpl = env.get_template('win.html')
+        headers = {'Accept': 'application/json'}
+        url = "https://api.coindesk.com/v1/bpi/currentprice.json"
+        r = requests.get(url, headers=headers)
+        response_data = r.json()
+        price = "$" + "{0:.2f}".format(float(str(response_data["bpi"]["USD"]["rate"]).replace(',',''))+2.5)
+        return tmpl.render(name=price)
+
 
 
     @cherrypy.expose
@@ -52,15 +62,13 @@ class Landing_Page(object):
         legal = (parse_code(access_token))
         if(legal):
             # The user is legal he can gamble
-            tmpl = env.get_template('exchange.html')
-            def btcprice(self):
-                headers = {'Accept': 'application/json'}
-                url = "https://api.coindesk.com/v1/bpi/currentprice.json"
-                r = requests.get(url, headers=headers)
-                response_data = r.json()
-                return "$" + response_data["bpi"]["USD"]["rate"]
-            name = btcprice(self)
-            return tmpl.render(name=name)
+            tmpl = env.get_template('testing.html')
+            headers = {'Accept': 'application/json'}
+            url = "https://api.coindesk.com/v1/bpi/currentprice.json"
+            r = requests.get(url, headers=headers)
+            response_data = r.json()
+            price = "$" + "{0:.2f}".format(float(str(response_data["bpi"]["USD"]["rate"]).replace(',','')))
+            return tmpl.render(name=price)
         else:
             return "You are too young to bet. Sorry!"
             # Please reach your leagal age
